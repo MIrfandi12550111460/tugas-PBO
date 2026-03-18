@@ -1,0 +1,19 @@
+from pathlib import Path
+
+path = Path("guest_book.txt")
+angka_list = []
+
+while True:
+    angka =input("masukkan angka (ketik exit untuk keluar): ")
+
+    if angka.lower() == "exit":
+        for angka in angka_list:
+            print("angka anda adalah :" + str(angka))
+        break
+
+    try:
+        angka = int(angka)
+        angka_list.append(angka)
+        path.write_text("\n".join(str(angka) for angka in angka_list))
+    except ValueError:
+        print("input yang anda masukkan tidak valid. inputan harus berupa angka.Program akan tetap lanjut,silakan masukkan input angka")
